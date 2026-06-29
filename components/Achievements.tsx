@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Users, Shield, Medal } from "lucide-react";
 import Image from "next/image";
+import InstagramAudienceStats from "./InstagramAudienceStats";
 
 const achievements = [
   {
@@ -81,8 +82,12 @@ export const Achievements = () => {
               </div>
 
               {/* Media Showcase Column (Spans half the page: md:w-1/2) */}
-              <div className="w-full md:w-1/2 rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] backdrop-blur-md aspect-video relative flex items-center justify-center shadow-2xl hover:border-[var(--color-accent)]/30 hover:shadow-[0_20px_50px_rgba(235,94,40,0.15)] transition-all duration-500">
-                {item.mediaType === "image" ? (
+              <div className={`w-full md:w-1/2 rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] backdrop-blur-md relative flex items-center justify-center shadow-2xl hover:border-[var(--color-accent)]/30 hover:shadow-[0_20px_50px_rgba(235,94,40,0.15)] transition-all duration-500 ${
+                idx === 0 ? "min-h-[380px]" : "aspect-video"
+              }`}>
+                {idx === 0 ? (
+                  <InstagramAudienceStats />
+                ) : item.mediaType === "image" ? (
                   <div className="relative w-full h-full">
                     {!imageError[idx] ? (
                       <Image
