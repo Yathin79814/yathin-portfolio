@@ -6,39 +6,50 @@ import {
   SiCanva,
   SiOpenai,
   SiGooglegemini,
-  SiAnthropic,
   SiNotion,
   SiInstagram,
   SiPinterest,
   SiYoutube
 } from "react-icons/si";
-import { TbBrandAdobePhotoshop, TbBrandAdobePremier } from "react-icons/tb";
 
-// Colorful Brand SVG Icons
+// Colorful Brand SVG Icons with high contrast gradient badges
 const HiggsfieldIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="5" fill="#1A1921" />
-    <path d="M6 5v14M18 5v14M6 12h12" stroke="#FF5722" strokeWidth="2.5" strokeLinecap="round" />
-    <circle cx="12" cy="12" r="2.5" fill="#FF9800" />
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="8" fill="url(#higgsfield-bg)" />
+    <path d="M9 8V24M23 8V24M9 16H23" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
+    <circle cx="16" cy="16" r="3.5" fill="#FFD700" stroke="#FFFFFF" strokeWidth="1.2" />
+    <defs>
+      <linearGradient id="higgsfield-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FF4500" />
+        <stop offset="50%" stopColor="#FF6B00" />
+        <stop offset="100%" stopColor="#FF8C00" />
+      </linearGradient>
+    </defs>
   </svg>
 );
 
 const ElevenLabsIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="5" fill="#0F0F12" />
-    <rect x="7" y="5" width="3" height="14" rx="1.5" fill="#6366F1" />
-    <rect x="14" y="5" width="3" height="14" rx="1.5" fill="#818CF8" />
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="8" fill="#000000" stroke="#333345" strokeWidth="1" />
+    <rect x="9" y="7" width="4" height="18" rx="2" fill="#6366F1" />
+    <rect x="19" y="7" width="4" height="18" rx="2" fill="#818CF8" />
+  </svg>
+);
+
+const ClaudeIcon = (props: any) => (
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="8" fill="#D97757" />
+    <path d="M16 6L18.5 13.5L26 16L18.5 18.5L16 26L13.5 18.5L6 16L13.5 13.5L16 6Z" fill="#FFFFFF" />
   </svg>
 );
 
 const HeyGenIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="5" fill="#181028" />
-    <circle cx="12" cy="12" r="9" fill="url(#heygen-grad)" />
-    <polygon points="10,8 16,12 10,16" fill="#FFFFFF" />
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="8" fill="url(#heygen-bg)" />
+    <path d="M12 9.5V22.5L22 16L12 9.5Z" fill="#FFFFFF" />
     <defs>
-      <linearGradient id="heygen-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#8B5CF6" />
+      <linearGradient id="heygen-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#7C3AED" />
         <stop offset="100%" stopColor="#EC4899" />
       </linearGradient>
     </defs>
@@ -46,43 +57,43 @@ const HeyGenIcon = (props: any) => (
 );
 
 const CapCutIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="5" fill="#000000" />
-    <path d="M7 8l5 4-5 4V8z" fill="#00F0FF" />
-    <path d="M17 8l-5 4 5 4V8z" fill="#FF0055" />
-    <rect x="6" y="6" width="12" height="12" rx="2" stroke="#FFFFFF" strokeWidth="1.2" />
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="8" fill="#0D0D12" stroke="#2D2D3A" strokeWidth="1" />
+    <path d="M8 10L14 16L8 22V10Z" fill="#00F0FF" />
+    <path d="M24 10L18 16L24 22V10Z" fill="#FF0055" />
+    <circle cx="16" cy="16" r="2.5" fill="#FFFFFF" />
   </svg>
 );
 
 const LightroomIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="4" fill="#001E36" stroke="#31A8FF" strokeWidth="1.5" />
-    <text x="5" y="16" fill="#31A8FF" fontSize="11" fontWeight="bold" fontFamily="Arial">Lr</text>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="6" fill="#001E36" stroke="#31A8FF" strokeWidth="1.5" />
+    <text x="6" y="22" fill="#31A8FF" fontSize="15" fontWeight="bold" fontFamily="Arial">Lr</text>
   </svg>
 );
 
 const PhotoshopIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="4" fill="#001E36" stroke="#31A8FF" strokeWidth="1.5" />
-    <text x="5" y="16" fill="#31A8FF" fontSize="11" fontWeight="bold" fontFamily="Arial">Ps</text>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="6" fill="#001E36" stroke="#31A8FF" strokeWidth="1.5" />
+    <text x="6" y="22" fill="#31A8FF" fontSize="15" fontWeight="bold" fontFamily="Arial">Ps</text>
   </svg>
 );
 
 const PremiereIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect width="24" height="24" rx="4" fill="#260033" stroke="#9999FF" strokeWidth="1.5" />
-    <text x="5" y="16" fill="#9999FF" fontSize="11" fontWeight="bold" fontFamily="Arial">Pr</text>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="32" height="32" rx="6" fill="#260033" stroke="#9999FF" strokeWidth="1.5" />
+    <text x="6" y="22" fill="#9999FF" fontSize="15" fontWeight="bold" fontFamily="Arial">Pr</text>
   </svg>
 );
 
 const tools = [
   { name: "Higgsfield AI", Icon: HiggsfieldIcon, color: "#FF5722" },
   { name: "ElevenLabs", Icon: ElevenLabsIcon, color: "#6366F1" },
-  { name: "Claude", Icon: SiAnthropic, color: "#D97757" },
+  { name: "Claude", Icon: ClaudeIcon, color: "#D97757" },
   { name: "HeyGen", Icon: HeyGenIcon, color: "#EC4899" },
+  { name: "CapCut", Icon: CapCutIcon, color: "#00F0FF" },
   { name: "ChatGPT", Icon: SiOpenai, color: "#10A37F" },
   { name: "Gemini", Icon: SiGooglegemini, color: "#8E24AA" },
-  { name: "CapCut", Icon: CapCutIcon, color: "#00F0FF" },
   { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
   { name: "Photoshop", Icon: PhotoshopIcon, color: "#31A8FF" },
   { name: "Lightroom", Icon: LightroomIcon, color: "#31A8FF" },
@@ -120,10 +131,9 @@ export const ToolMarquee = () => {
                 className="group relative flex flex-col items-center justify-center px-4 cursor-pointer"
               >
                 <div 
-                  className="transition-all duration-300 transform group-hover:scale-125 filter drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
-                  style={{ color: tool.color }}
+                  className="transition-all duration-300 transform group-hover:scale-125 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]"
                 >
-                  <IconComponent className="w-7 h-7 md:w-8 md:h-8" />
+                  <IconComponent className="w-8 h-8 md:w-9 md:h-9" />
                 </div>
                 <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[10px] md:text-xs font-semibold text-white whitespace-nowrap tracking-wider uppercase drop-shadow-md">
                   {tool.name}
