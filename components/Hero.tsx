@@ -79,11 +79,16 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl mb-12"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl mb-12"
         >
           <div className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-lg hover:border-[var(--color-accent)]/40 hover:bg-white/[0.05] transition-all duration-300">
             <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">30K+</span>
             <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">Design Community</span>
+          </div>
+
+          <div className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-lg hover:border-[var(--color-accent)]/40 hover:bg-white/[0.05] transition-all duration-300">
+            <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">Full-Stack</span>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">UI/UX & Code</span>
           </div>
 
           <div className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-lg hover:border-[var(--color-accent)]/40 hover:bg-white/[0.05] transition-all duration-300">
