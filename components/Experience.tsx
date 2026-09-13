@@ -186,7 +186,7 @@ export const Experience = () => {
                   className={`pl-12 md:pl-0 w-full md:w-[calc(50%-2.5rem)] ${isEven ? "md:mr-auto" : "md:ml-auto"
                     }`}
                 >
-                  <div className="group relative bg-[#141419]/95 border border-white/10 hover:border-[var(--color-accent)]/50 backdrop-blur-xl p-6 sm:p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(235,94,40,0.15)]">
+                  <div className="group relative bg-white/[0.04] backdrop-blur-xl border border-white/15 hover:border-[var(--color-accent)]/50 p-6 sm:p-8 rounded-3xl transition-all duration-300 hover:bg-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:shadow-[0_12px_40px_rgba(235,94,40,0.15)] overflow-hidden">
 
                     {/* Date badge inside card for mobile */}
                     <div className="md:hidden inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] bg-white/5 px-3 py-1 rounded-full border border-white/10 mb-3">
@@ -250,22 +250,19 @@ export const Experience = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="bg-[#141419]/80 border border-white/10 hover:border-white/20 p-6 rounded-2xl transition-all duration-300 hover:bg-white/[0.05]"
+                className="group relative bg-white/[0.04] backdrop-blur-xl border border-white/15 hover:border-[var(--color-accent)]/50 p-6 sm:p-7 rounded-3xl transition-all duration-300 hover:bg-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:shadow-[0_12px_40px_rgba(235,94,40,0.15)] overflow-hidden"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/20 border border-[var(--color-accent)]/30 flex items-center justify-center text-[var(--color-accent)]">
-                    <Icon size={20} />
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-[var(--color-accent)]/20 border border-[var(--color-accent)]/40 flex items-center justify-center text-[var(--color-accent)] shadow-[0_0_15px_rgba(235,94,40,0.2)] group-hover:scale-105 transition-transform duration-300">
+                    <Icon size={22} />
                   </div>
-                  <span className="text-xs font-semibold text-[var(--color-secondary)] bg-white/5 px-3 py-1 rounded-full border border-white/5">
-                    {item.duration}
-                  </span>
                 </div>
 
-                <h4 className="text-lg font-bold text-[#FFFCF2] mb-1">{item.role}</h4>
+                <h4 className="text-xl font-extrabold text-[#FFFCF2] mb-1.5 group-hover:text-white transition-colors">{item.role}</h4>
                 <p className="text-xs font-bold text-[var(--color-accent)] uppercase tracking-wider mb-3">
                   {item.company}
                 </p>
-                <p className="text-xs text-[var(--color-secondary)] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[var(--color-secondary)] leading-relaxed font-normal">
                   {item.description}
                 </p>
               </motion.div>
