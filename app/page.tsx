@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
-import { ScrollyCanvas } from "@/components/ScrollyCanvas";
+import { GlobalSpaceCanvas } from "@/components/GlobalSpaceCanvas";
+import { Hero } from "@/components/Hero";
 import { ToolMarquee } from "@/components/ToolMarquee";
-import { Projects } from "@/components/Projects";
 import { WorkVideos } from "@/components/WorkVideos";
 import { PinterestAds } from "@/components/PinterestAds";
 import { About } from "@/components/About";
@@ -31,16 +31,18 @@ export default async function Home() {
   }
 
   return (
-    <main className="relative bg-[#121212] min-h-screen selection:bg-[var(--color-accent)] selection:text-white">
-      <ScrollyCanvas />
+    <main className="relative bg-black min-h-screen selection:bg-[var(--color-accent)] selection:text-white">
+      {/* Global 3D Space Canvas spanning across all sections */}
+      <GlobalSpaceCanvas />
+
+      <Hero />
       
-      <div className="relative bg-[#121212] z-20 pt-12 pb-12 shadow-[0_-50px_100px_rgba(18,18,18,1)]">
+      <div className="relative bg-transparent z-20 pt-6 pb-12">
         <ToolMarquee />
-        <Projects />
         <WorkVideos />
-        <PinterestAds />
         <About />
         <Experience />
+        <PinterestAds />
         <Achievements />
         <Skills />
         <CombinedGallery files={galleryFiles} />

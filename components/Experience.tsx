@@ -1,400 +1,281 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Users,
+  Video,
   Sparkles,
   Zap,
-  Palette,
-  Layers,
+  Users,
+  Calendar,
+  MapPin,
   Briefcase,
+  Layers,
   Shield,
   Megaphone,
   Camera,
-  Calendar,
-  ArrowRight,
   Globe
 } from "lucide-react";
 
-interface ExperienceItem {
+interface WorkExperienceItem {
+  role: string;
+  company: string;
+  location?: string;
+  duration: string;
+  icon: React.ComponentType<any>;
+  bullets: string[];
+}
+
+interface CampusExperienceItem {
   role: string;
   company: string;
   duration: string;
   icon: React.ComponentType<any>;
-  short: string;
   description: string;
-  gallerySlug?: string;
 }
 
-const experiences: { professional: ExperienceItem[]; campus: ExperienceItem[] } = {
-  professional: [
-    {
-      role: "Founder & Creative Lead",
-      company: "@designpreneurss",
-      duration: "2020 - Present",
-      icon: Users,
-      short: "@designpreneurss",
-      description: "Founded and scaled an organic design community to 30,000+ followers on Instagram. Directing content strategy, producing high-impact UI/UX tutorials, and designing visual templates that teach design principles through engaging short-form media."
-    },
-    {
-      role: "Creative Design, AI Content & Digital Marketing Intern",
-      company: "Attacked AI",
-      duration: "Aug 2025 – Dec 2025",
-      icon: Sparkles,
-      short: "Attacked AI",
-      description: "Shot and edited high-converting reels/videos using CapCut, and produced AI-generated images/videos for daily marketing campaigns. Designed branded website banners and contributed to AI-based podcast and creative media production workflows."
-    },
-    {
-      role: "Digital Marketing Intern",
-      company: "EVtron Tech",
-      duration: "May 2025 – Aug 2025",
-      icon: Zap,
-      short: "EVtron Tech",
-      description: "Supported digital marketing and brand visibility campaigns for EV charging solutions. Managed content asset libraries and secured 2nd Place at the IBCN Innovation Challenge by delivering compelling visuals and pitch presentation designs."
-    },
-    {
-      role: "UI Visual Designer & Branding Lead Intern",
-      company: "Viberr",
-      duration: "May 2025 – Jul 2025",
-      icon: Palette,
-      short: "Viberr",
-      description: "Developed brand identity, UI graphics, and cohesive visual design systems for a digital social media platform. Created iconography and assets, collaborating with a fast-paced team to deliver high-quality design assets on tight timelines."
-    }
-  ],
-  campus: [
-    {
-      role: "Design Lead",
-      company: "Samgatha / Vashisht Fest",
-      duration: "2023 - Present",
-      icon: Layers,
-      short: "Samgatha Fest",
-      description: "Led a team of designers to build the brand identity and media coverage for the annual fests, producing promotional assets, reels, and templates. I learned creative team direction, brand strategy alignment, and rapid asset pipeline management. This is useful for scaling visual design systems, managing design teams, and directing creative launches in tech startups."
-    },
-    {
-      role: "Student Coordinator",
-      company: "Placement Cell Coordinator",
-      duration: "2023 - Present",
-      icon: Briefcase,
-      short: "Placement Cell",
-      description: "Coordinated end-to-end recruitment logistics, stakeholder communications, and schedules for 200+ students and top recruiters. I learned client relations, business development, database management, and operational negotiation. This is useful for product management, managing complex stakeholders, and handling large-scale operational pipelines."
-    },
-    {
-      role: "Senior Under Officer (SUO)",
-      company: "National Cadet Corps (NCC)",
-      duration: "Nov 2022 – May 2025",
-      icon: Shield,
-      short: "NCC SUO",
-      description: "Commanded a unit of 52+ cadets, representing our campus at the national EBSB camp and receiving the 'Best Cadet' award. I built leadership accountability, operational discipline, and cross-cultural coordination. This is useful for managing large engineering squads, driving team accountability, and leading initiatives under high-pressure scenarios.",
-      gallerySlug: "ncc"
-    },
-    {
-      role: "Volunteering & Organizing Committee",
-      company: "CVIP 2024 (International Conference)",
-      duration: "2024",
-      icon: Globe,
-      short: "CVIP 2024",
-      description: "Organized event operations and hosted distinguished academic guests for the CVIP 2024 international conference under Dr. Jagadeesh Kakarla. I learned scientific conference administration, hospitality logistics, and executive communication. This is useful for managing corporate stakeholder relationships, large conventions, and professional client engagement.",
-      gallerySlug: "cvip"
-    },
-    {
-      role: "Publicity Lead",
-      company: "SAVA Fest",
-      duration: "2024 - Present",
-      icon: Megaphone,
-      short: "SAVA Fest",
-      description: "Spearheaded digital publicity campaigns, reels content optimization, and marketing outreach strategies for SAVA Fest. I learned content funnel analytics, user growth marketing, and social community building. This is useful for executing user growth strategies, driving brand visibility, and organizing digital marketing campaigns.",
-      gallerySlug: "savara"
-    },
-    {
-      role: "Core Member",
-      company: "Photography Club — IMAGIX",
-      duration: "2022 - Present",
-      icon: Camera,
-      short: "IMAGIX Club",
-      description: "Captured candid photography, motion showcases, and handled multi-camera lighting and framing for major college fests and events. I mastered visual storytelling, light grading, and rapid post-production using Lightroom and CapCut. This is useful for designing premium interfaces, branding materials, and marketing layouts with pixel-perfect accuracy.",
-      gallerySlug: "imagix"
-    }
-  ]
-};
+const workExperiences: WorkExperienceItem[] = [
+  {
+    role: "AI Content Creator (Short-Form Creative Content)",
+    company: "Influx Health",
+    location: "Hyderabad, Telangana",
+    duration: "Jul 2026 – Present",
+    icon: Video,
+    bullets: [
+      "Produced 60+ short-form AI videos for healthcare and educational-support clients within one month, sustaining a 5–10 video/day production pace.",
+      "Architected an end-to-end AI video pipeline spanning Higgsfield for generation, HeyGen for avatar and voiceover, and CapCut with motion design for editing and polish.",
+      "Scripted and structured ideation-to-storyboard workflows using Claude to accelerate production timelines.",
+      "Delivered vertical, caption-ready videos with consistent branding across specialties, meeting healthcare-compliant messaging standards."
+    ]
+  },
+  {
+    role: "Creative Design, AI Content & Digital Marketing Intern",
+    company: "Attacked AI",
+    location: "Chennai, Tamil Nadu",
+    duration: "Aug 2025 – Dec 2025",
+    icon: Sparkles,
+    bullets: [
+      "Shot and edited short-form videos and reels for social campaigns, leveraging mobile videography and CapCut to cut turnaround time under tight deadlines.",
+      "Generated AI-assisted images and videos powering daily visual storytelling across marketing channels.",
+      "Produced branded creatives and managed content publishing workflows for AI-driven media, including podcast production."
+    ]
+  },
+  {
+    role: "Digital Marketing Intern",
+    company: "EVtron Tech",
+    location: "Chennai, Tamil Nadu",
+    duration: "May 2025 – Aug 2025",
+    icon: Zap,
+    bullets: [
+      "Planned and executed end-to-end social campaigns for an EV charging brand.",
+      "Contributed visual storytelling and presentation design to a 2nd-place finish at the IBCN Innovation Challenge."
+    ]
+  },
+  {
+    role: "Founder & Content Creator",
+    company: "designpreneurss — Instagram Content Brand",
+    location: "Remote / Online",
+    duration: "Mar 2020 – Present",
+    icon: Users,
+    bullets: [
+      "Grew designpreneurss to 30,000+ organic followers by producing trend-led reels, carousels, and tutorials on UI/UX, Photoshop, and Canva.",
+      "Own the full content lifecycle — ideation, shooting, editing, captioning, scheduling, and community engagement."
+    ]
+  }
+];
 
-// Computes nodes along a right-facing semi-circular arc matching the design coordinates
-const getCoordinates = (count: number) => {
-  if (count <= 1) {
-    return [{ x: 190, y: 200, labelAlign: "right" as const }];
+const campusExperiences: CampusExperienceItem[] = [
+  {
+    role: "Design Lead",
+    company: "Samgatha / Vashisht Fest",
+    duration: "2023 - Present",
+    icon: Layers,
+    description: "Led a team of designers to build brand identity and media coverage for annual fests, scaling visual design systems and managing rapid asset delivery."
+  },
+  {
+    role: "Student Coordinator",
+    company: "Placement Cell Coordinator",
+    duration: "2023 - Present",
+    icon: Briefcase,
+    description: "Coordinated recruitment logistics, stakeholder communications, and schedules for 200+ students and top recruiters."
+  },
+  {
+    role: "Senior Under Officer (SUO)",
+    company: "National Cadet Corps (NCC)",
+    duration: "Nov 2022 – May 2025",
+    icon: Shield,
+    description: "Commanded a unit of 52+ cadets, representing campus at EBSB national camp and receiving 'Best Cadet' for operational leadership."
+  },
+  {
+    role: "Volunteering & Organizing Committee",
+    company: "CVIP 2024 (International Conference)",
+    duration: "2024",
+    icon: Globe,
+    description: "Organized operations and hosted international academic guests for CVIP 2024 under Dr. Jagadeesh Kakarla."
+  },
+  {
+    role: "Publicity Lead",
+    company: "SAVA Fest",
+    duration: "2024 - Present",
+    icon: Megaphone,
+    description: "Spearheaded digital publicity campaigns, reels content optimization, and marketing outreach strategies."
+  },
+  {
+    role: "Core Member",
+    company: "Photography Club — IMAGIX",
+    duration: "2022 - Present",
+    icon: Camera,
+    description: "Handled event photography, motion showcases, and post-production editing using Lightroom and CapCut."
   }
-  const coords = [];
-  for (let i = 0; i < count; i++) {
-    // Distribute y coordinates between 40 and 360
-    const y = 40 + i * (320 / (count - 1));
-    // Quadratic equation x = 190 - (y-200)^2 / 160
-    const x = 190 - Math.pow(y - 200, 2) / 160;
-    const labelAlign = x > 100 ? ("right" as const) : ("left" as const);
-    coords.push({ x: Math.round(x), y: Math.round(y), labelAlign });
-  }
-  return coords;
-};
+];
 
 export const Experience = () => {
-  const [activeTab, setActiveTab] = useState<"professional" | "campus">("professional");
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const activeList = experiences[activeTab];
-  const activeExp = activeList[activeIndex] || activeList[0];
-  const ActiveIcon = activeExp.icon;
-  const coords = getCoordinates(activeList.length);
-
-  const handleTabChange = (tab: "professional" | "campus") => {
-    setActiveTab(tab);
-    setActiveIndex(0);
-  };
-
   return (
-    <section id="experience" className="py-32 px-6 md:px-12 max-w-6xl mx-auto relative z-10">
-      <div className="mb-12 text-center md:text-left">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Experience</h2>
-        <p className="text-[var(--color-secondary)] text-lg">Where I've delivered impact.</p>
+    <section id="experience" className="py-28 px-4 sm:px-6 md:px-12 max-w-6xl mx-auto relative z-10">
+      
+      {/* Section Title */}
+      <div className="text-center mb-20">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#FFFCF2] tracking-tight mb-4">
+          Work Experience<span className="text-[var(--color-accent)]">.</span>
+        </h2>
+        <p className="text-base sm:text-lg text-[var(--color-secondary)] max-w-xl mx-auto">
+          High-volume AI content production, brand design, and digital marketing milestones.
+        </p>
       </div>
 
-      {/* Category Tab Selector */}
-      <div className="flex justify-center mb-16 relative z-30">
-        <div className="flex bg-[#161616]/90 backdrop-blur-md border border-white/10 p-1.5 rounded-full relative shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
-          <button
-            onClick={() => handleTabChange("professional")}
-            className={`relative px-6 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase transition-colors duration-300 focus:outline-none ${
-              activeTab === "professional" ? "text-white" : "text-white/50 hover:text-white/80"
-            }`}
-          >
-            {activeTab === "professional" && (
-              <motion.div
-                layoutId="active-experience-tab"
-                className="absolute inset-0 bg-[var(--color-accent)] rounded-full -z-10 shadow-[0_0_15px_rgba(235,94,40,0.3)]"
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              />
-            )}
-            Professional Experience
-          </button>
-          <button
-            onClick={() => handleTabChange("campus")}
-            className={`relative px-6 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase transition-colors duration-300 focus:outline-none ${
-              activeTab === "campus" ? "text-white" : "text-white/50 hover:text-white/80"
-            }`}
-          >
-            {activeTab === "campus" && (
-              <motion.div
-                layoutId="active-experience-tab"
-                className="absolute inset-0 bg-[var(--color-accent)] rounded-full -z-10 shadow-[0_0_15px_rgba(235,94,40,0.3)]"
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              />
-            )}
-            Campus & Leadership
-          </button>
-        </div>
-      </div>
+      {/* Vertical Alternating Timeline Container */}
+      <div className="relative mb-28">
+        
+        {/* Central Vertical Timeline Line */}
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-[var(--color-accent)] via-white/20 to-[var(--color-accent)] shadow-[0_0_15px_rgba(235,94,40,0.5)]" />
 
-      {/* Desktop Grid Layout (Semi-Circle Arc + Detail Card) */}
-      <div className="hidden md:grid grid-cols-12 gap-12 items-center">
-        {/* Left Column: Interactive Semi-Circle Arc Timeline */}
-        <div className="col-span-5 relative w-[260px] h-[400px] mx-auto select-none">
-          {/* SVG Arc Path representing the semi-circle */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 400" fill="none">
-            <defs>
-              <linearGradient id="arc-glow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="rgba(255, 255, 255, 0.05)" />
-                <stop offset="50%" stopColor="var(--color-accent)" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="rgba(255, 255, 255, 0.05)" />
-              </linearGradient>
-            </defs>
-            {/* Background thin track */}
-            <path
-              d="M 30 40 A 180 180 0 0 1 30 360"
-              stroke="white"
-              strokeOpacity="0.05"
-              strokeWidth="3"
-              fill="none"
-            />
-            {/* Active glowing gradient track */}
-            <path
-              d="M 30 40 A 180 180 0 0 1 30 360"
-              stroke="url(#arc-glow)"
-              strokeWidth="3"
-              strokeDasharray="6 6"
-              fill="none"
-            />
-          </svg>
-
-          {/* Sliding active glow ring under the active node */}
-          <motion.div
-            className="absolute w-16 h-16 rounded-full bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30 blur-md pointer-events-none"
-            style={{ x: -32, y: -32, left: 0, top: 0 }}
-            animate={{
-              x: coords[activeIndex]?.x ?? 30,
-              y: coords[activeIndex]?.y ?? 40,
-            }}
-            transition={{ type: "spring", stiffness: 180, damping: 22 }}
-          />
-          <motion.div
-            className="absolute w-10 h-10 rounded-full border border-[var(--color-accent)] shadow-[0_0_15px_rgba(235,94,40,0.4)] pointer-events-none"
-            style={{ x: -20, y: -20, left: 0, top: 0 }}
-            animate={{
-              x: coords[activeIndex]?.x ?? 30,
-              y: coords[activeIndex]?.y ?? 40,
-            }}
-            transition={{ type: "spring", stiffness: 180, damping: 22 }}
-          />
-
-          {/* Interactive Node Buttons along the arc */}
-          {activeList.map((exp, idx) => {
+        <div className="space-y-16 md:space-y-20">
+          {workExperiences.map((exp, idx) => {
             const Icon = exp.icon;
-            const isActive = activeIndex === idx;
-            const coord = coords[idx] || { x: 30, y: 40, labelAlign: "left" };
+            const isEven = idx % 2 === 0;
 
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="absolute transition-all duration-500"
-                style={{
-                  left: `${coord.x}px`,
-                  top: `${coord.y}px`,
-                  transform: "translate(-50%, -50%)",
-                }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="relative flex flex-col md:flex-row items-start md:items-center"
               >
-                {/* Node Interactive Circle */}
-                <button
-                  onClick={() => setActiveIndex(idx)}
-                  onMouseEnter={() => setActiveIndex(idx)}
-                  className={`w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-300 focus:outline-none ${
-                    isActive
-                      ? "bg-[var(--color-accent)] border-[var(--color-accent)] text-white scale-110 shadow-[0_0_20px_rgba(235,94,40,0.5)]"
-                      : "bg-[#161616] border-white/10 text-white/50 hover:text-white hover:border-white/30"
-                  }`}
-                  aria-label={`View ${exp.role} experience`}
-                >
-                  <Icon size={20} />
-                </button>
-
-                {/* Node Short Label */}
-                <div
-                  className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap text-xs font-semibold tracking-wider uppercase transition-colors duration-300 pointer-events-none ${
-                    coord.labelAlign === "left" ? "left-16 text-left" : "right-16 text-right"
-                  } ${isActive ? "text-[var(--color-accent)]" : "text-white/40"}`}
-                >
-                  {exp.short}
+                {/* Timeline Icon Node (Centered on line for desktop, Left for mobile) */}
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-[#18181f] border-2 border-[var(--color-accent)] shadow-[0_0_20px_rgba(235,94,40,0.5)] flex items-center justify-center text-white">
+                    <Icon size={20} className="text-[var(--color-accent)]" />
+                  </div>
                 </div>
-              </div>
+
+                {/* Date Label on opposite side of card */}
+                <div
+                  className={`hidden md:block absolute top-3 text-xs sm:text-sm font-semibold tracking-wider text-[var(--color-accent)] uppercase ${
+                    isEven
+                      ? "left-[calc(50%+2.5rem)] text-left"
+                      : "right-[calc(50%+2.5rem)] text-right"
+                  }`}
+                >
+                  <div className="flex items-center gap-1.5 inline-flex bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
+                    <Calendar size={13} /> {exp.duration}
+                  </div>
+                </div>
+
+                {/* Content Card (Alternates left/right on desktop) */}
+                <div
+                  className={`pl-12 md:pl-0 w-full md:w-[calc(50%-2.5rem)] ${
+                    isEven ? "md:mr-auto" : "md:ml-auto"
+                  }`}
+                >
+                  <div className="group relative bg-[#141419]/95 border border-white/10 hover:border-[var(--color-accent)]/50 backdrop-blur-xl p-6 sm:p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(235,94,40,0.15)]">
+                    
+                    {/* Date badge inside card for mobile */}
+                    <div className="md:hidden inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] bg-white/5 px-3 py-1 rounded-full border border-white/10 mb-3">
+                      <Calendar size={12} /> {exp.duration}
+                    </div>
+
+                    {/* Role Title */}
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-[#FFFCF2] tracking-tight mb-1 group-hover:text-white transition-colors">
+                      {exp.role}
+                    </h3>
+
+                    {/* Company & Location */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-white/10">
+                      <span className="text-sm font-bold tracking-wider text-[var(--color-accent)] uppercase">
+                        {exp.company}
+                      </span>
+                      {exp.location && (
+                        <span className="inline-flex items-center gap-1 text-xs text-white/50">
+                          <MapPin size={12} /> {exp.location}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Bullet Points */}
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-[#CCC5B9]/90 leading-relaxed">
+                      {exp.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2.5">
+                          <span className="text-[var(--color-accent)] mt-1 font-bold">•</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                  </div>
+                </div>
+
+              </motion.div>
             );
           })}
         </div>
+      </div>
 
-        {/* Right Column: Detailed Experience Content Card */}
-        <div className="col-span-7 min-h-[300px] flex items-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${activeTab}-${activeIndex}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="w-full bg-white/[0.03] border border-white/10 backdrop-blur-xl p-10 rounded-3xl hover:border-white/15 transition-colors shadow-2xl relative overflow-hidden group"
-            >
-              {/* Decorative background glow matching current selection */}
-              <div className="absolute -right-24 -top-24 w-48 h-48 rounded-full bg-[var(--color-accent)] opacity-5 blur-[80px] pointer-events-none group-hover:opacity-10 transition-opacity" />
+      {/* Campus & Leadership Section */}
+      <div className="mt-24 pt-16 border-t border-white/10">
+        <div className="text-center mb-12">
+          <h3 className="text-2xl sm:text-3xl font-bold text-[#FFFCF2] mb-3">
+            Campus & Leadership Roles
+          </h3>
+          <p className="text-sm text-[var(--color-secondary)]">
+            Organizing fests, commanding NCC squads, and leading university initiatives.
+          </p>
+        </div>
 
-              <div className="flex flex-col gap-6">
-                <div className="flex flex-wrap items-center gap-4 justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-[var(--color-accent)]/15 border border-[var(--color-accent)]/30 flex items-center justify-center text-[var(--color-accent)]">
-                    <ActiveIcon size={24} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {campusExperiences.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="bg-[#141419]/80 border border-white/10 hover:border-white/20 p-6 rounded-2xl transition-all duration-300 hover:bg-white/[0.05]"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/20 border border-[var(--color-accent)]/30 flex items-center justify-center text-[var(--color-accent)]">
+                    <Icon size={20} />
                   </div>
-                  <div className="flex items-center gap-1.5 text-sm font-medium text-[var(--color-secondary)] bg-white/5 px-4 py-1.5 rounded-full border border-white/5 shadow-inner">
-                    <Calendar size={14} className="text-[var(--color-accent)]" /> {activeExp.duration}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-extrabold text-[#FFFCF2] tracking-tight mb-2">
-                    {activeExp.role}
-                  </h3>
-                  <span className="inline-block text-base font-semibold tracking-wider text-[var(--color-accent)] uppercase">
-                    {activeExp.company}
+                  <span className="text-xs font-semibold text-[var(--color-secondary)] bg-white/5 px-3 py-1 rounded-full border border-white/5">
+                    {item.duration}
                   </span>
                 </div>
 
-                <p className="text-[var(--color-secondary)] leading-relaxed text-lg pt-4 border-t border-white/5">
-                  {activeExp.description}
+                <h4 className="text-lg font-bold text-[#FFFCF2] mb-1">{item.role}</h4>
+                <p className="text-xs font-bold text-[var(--color-accent)] uppercase tracking-wider mb-3">
+                  {item.company}
                 </p>
-
-                <div className="pt-4 flex items-center">
-                  {activeExp.gallerySlug ? (
-                    <Link
-                      href={`/gallery/${activeExp.gallerySlug}`}
-                      className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-[#121212] bg-[var(--color-accent)] hover:bg-[#FFFCF2] hover:shadow-[0_0_20px_rgba(235,94,40,0.4)] transition-all py-3.5 px-7 rounded-full select-none cursor-pointer"
-                    >
-                      Gallery <ArrowRight size={14} />
-                    </Link>
-                  ) : (
-                    <div className="flex items-center gap-2 text-xs font-semibold tracking-widest text-[var(--color-accent)] uppercase group-hover:translate-x-1 transition-transform select-none">
-                      Active Milestone <ArrowRight size={14} />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                <p className="text-xs text-[var(--color-secondary)] leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Mobile Stacked Layout (Degrades gracefully on smaller screens) */}
-      <div className="md:hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-8"
-          >
-            {activeList.map((exp, idx) => {
-              const Icon = exp.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white/[0.03] border border-white/10 p-8 rounded-2xl relative"
-                >
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/20 border border-[var(--color-accent)]/30 flex items-center justify-center text-[var(--color-accent)]">
-                      <Icon size={20} />
-                    </div>
-                    <span className="text-xs font-medium text-[var(--color-secondary)] bg-white/5 px-3 py-1 rounded-full border border-white/5">
-                      {exp.duration}
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-[#FFFCF2] mb-1">{exp.role}</h3>
-                  <p className="text-sm font-semibold text-[var(--color-accent)] mb-4 uppercase tracking-wider">
-                    {exp.company}
-                  </p>
-                  <p className="text-[var(--color-secondary)] leading-relaxed text-sm mb-6">
-                    {exp.description}
-                  </p>
-
-                  {exp.gallerySlug && (
-                    <div className="mt-4">
-                      <Link
-                        href={`/gallery/${exp.gallerySlug}`}
-                        className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-[#121212] bg-[var(--color-accent)] hover:bg-[#FFFCF2] transition-all py-3 px-6 rounded-full"
-                      >
-                        Gallery <ArrowRight size={12} />
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </motion.div>
-        </AnimatePresence>
-      </div>
     </section>
   );
 };

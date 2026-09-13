@@ -6,11 +6,10 @@ import { Home, User, Briefcase, Layers, Mail, FileText, Play, TrendingUp, Image 
 
 const navItems = [
   { id: "home", label: "Home", icon: Home },
-  { id: "projects", label: "Projects", icon: Layers },
   { id: "videos", label: "Motion", icon: Play },
-  { id: "marketing", label: "Marketing", icon: TrendingUp },
   { id: "about", label: "About", icon: User },
   { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "marketing", label: "Marketing", icon: TrendingUp },
   { id: "gallery", label: "Gallery", icon: Image },
   { id: "contact", label: "Contact", icon: Mail },
 ];
@@ -91,7 +90,7 @@ export const Navbar = () => {
           <div className="w-6 h-px bg-white/20 mx-auto my-1" />
           
           <a
-            href="/Yatthin_resume.pdf"
+            href="/resume"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View Resume"
@@ -148,7 +147,7 @@ export const Navbar = () => {
           <div className="h-6 w-px bg-white/20 mx-1" />
           
           <a
-            href="/Yatthin_resume.pdf"
+            href="/resume"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View Resume"

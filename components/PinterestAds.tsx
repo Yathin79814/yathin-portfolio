@@ -12,11 +12,11 @@ const doublePins = [...pins, ...pins];
 
 export const PinterestAds = () => {
   return (
-    <section id="marketing" className="py-24 bg-[#121212] overflow-hidden relative z-10">
+    <section id="marketing" className="py-24 bg-transparent overflow-hidden relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3 text-[#FFFCF2]">
               AI Product Marketing <TrendingUp className="text-[var(--color-accent)] w-8 h-8" />
             </h2>
             <p className="text-[var(--color-secondary)] text-lg max-w-2xl">
@@ -24,7 +24,7 @@ export const PinterestAds = () => {
             </p>
           </div>
           <div className="mt-6 md:mt-0 flex gap-2">
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] border border-[var(--color-accent)]/30 flex items-center gap-1.5 shadow-sm">
+            <span className="text-xs font-semibold px-3.5 py-1.5 rounded-full bg-white/5 text-[var(--color-accent)] border border-[var(--color-accent)]/30 flex items-center gap-1.5 shadow-sm backdrop-blur-md">
               <Sparkles size={12} /> 25 Creative Variations
             </span>
           </div>
@@ -34,8 +34,8 @@ export const PinterestAds = () => {
       {/* Infinite Horizontal Scroll Container */}
       <div className="w-full relative py-4">
         {/* Edge Gradient Fades */}
-        <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-[#121212] via-[#121212]/90 to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-[#121212] via-[#121212]/90 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-black via-black/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none" />
 
         <div className="flex w-max">
           <motion.div
