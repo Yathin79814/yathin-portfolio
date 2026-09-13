@@ -169,29 +169,12 @@ export const Experience = () => {
                   </div>
                 </div>
 
-                {/* Date Label on opposite side of card */}
-                <div
-                  className={`hidden md:block absolute top-3 text-xs sm:text-sm font-semibold tracking-wider text-[var(--color-accent)] uppercase ${isEven
-                      ? "left-[calc(50%+2.5rem)] text-left"
-                      : "right-[calc(50%+2.5rem)] text-right"
-                    }`}
-                >
-                  <div className="flex items-center gap-1.5 inline-flex bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
-                    <Calendar size={13} /> {exp.duration}
-                  </div>
-                </div>
-
                 {/* Content Card (Alternates left/right on desktop) */}
                 <div
                   className={`pl-12 md:pl-0 w-full md:w-[calc(50%-2.5rem)] ${isEven ? "md:mr-auto" : "md:ml-auto"
                     }`}
                 >
                   <div className="group relative bg-white/[0.04] backdrop-blur-xl border border-white/15 hover:border-[var(--color-accent)]/50 p-6 sm:p-8 rounded-3xl transition-all duration-300 hover:bg-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:shadow-[0_12px_40px_rgba(235,94,40,0.15)] overflow-hidden">
-
-                    {/* Date badge inside card for mobile */}
-                    <div className="md:hidden inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] bg-white/5 px-3 py-1 rounded-full border border-white/10 mb-3">
-                      <Calendar size={12} /> {exp.duration}
-                    </div>
 
                     {/* Role Title */}
                     <h3 className="text-xl sm:text-2xl font-extrabold text-[#FFFCF2] tracking-tight mb-1 group-hover:text-white transition-colors">
