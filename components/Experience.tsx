@@ -38,7 +38,7 @@ const workExperiences: WorkExperienceItem[] = [
     role: "AI Content Creator (Short-Form Creative Content)",
     company: "Influx Health",
     location: "Hyderabad, Telangana",
-    duration: "Jul 2026 – Present",
+    duration: "Jul 2026",
     icon: Video,
     bullets: [
       "Produced 60+ short-form AI videos for healthcare and educational-support clients within one month, sustaining a 5–10 video/day production pace.",
@@ -74,7 +74,7 @@ const workExperiences: WorkExperienceItem[] = [
     role: "Founder & Content Creator",
     company: "designpreneurss — Instagram Content Brand",
     location: "Remote / Online",
-    duration: "Mar 2020 – Present",
+    duration: "Mar 2020 – 2024",
     icon: Users,
     bullets: [
       "Grew designpreneurss to 30,000+ organic followers by producing trend-led reels, carousels, and tutorials on UI/UX, Photoshop, and Canva.",
@@ -87,14 +87,14 @@ const campusExperiences: CampusExperienceItem[] = [
   {
     role: "Design Lead",
     company: "Samgatha / Vashisht Fest",
-    duration: "2023 - Present",
+    duration: "2023 – 2024",
     icon: Layers,
     description: "Led a team of designers to build brand identity and media coverage for annual fests, scaling visual design systems and managing rapid asset delivery."
   },
   {
     role: "Student Coordinator",
     company: "Placement Cell Coordinator",
-    duration: "2023 - Present",
+    duration: "2023 – 2024",
     icon: Briefcase,
     description: "Coordinated recruitment logistics, stakeholder communications, and schedules for 200+ students and top recruiters."
   },
@@ -115,14 +115,14 @@ const campusExperiences: CampusExperienceItem[] = [
   {
     role: "Publicity Lead",
     company: "SAVA Fest",
-    duration: "2024 - Present",
+    duration: "2024 – 2025",
     icon: Megaphone,
     description: "Spearheaded digital publicity campaigns, reels content optimization, and marketing outreach strategies."
   },
   {
     role: "Core Member",
     company: "Photography Club — IMAGIX",
-    duration: "2022 - Present",
+    duration: "2022 – 2025",
     icon: Camera,
     description: "Handled event photography, motion showcases, and post-production editing using Lightroom and CapCut."
   }

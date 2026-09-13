@@ -93,7 +93,7 @@ export default function ResumePage() {
                 <h3 className="text-base font-bold text-[#FFFCF2] print:text-black">
                   Influx Health <span className="font-normal text-xs text-white/50 print:text-black/60">— Hyderabad, Telangana</span>
                 </h3>
-                <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Jul 2026 – Present</span>
+                <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Jul 2026</span>
               </div>
               <p className="text-xs font-semibold text-white/70 mb-2 italic print:text-black/80">
                 AI Content Creator (Short-Form Creative Content)
@@ -152,7 +152,7 @@ export default function ResumePage() {
               <h3 className="text-base font-bold text-[#FFFCF2] print:text-black">
                 designpreneurss <span className="font-normal text-xs text-white/50 print:text-black/60">— Instagram Content Brand</span>
               </h3>
-              <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Mar 2020 – Present</span>
+              <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Mar 2020 – 2024</span>
             </div>
             <p className="text-xs font-semibold text-white/70 mb-2 italic print:text-black/80">
               Founder & Content Creator
