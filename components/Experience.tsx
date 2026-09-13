@@ -38,7 +38,7 @@ const workExperiences: WorkExperienceItem[] = [
     role: "AI Content Creator (Short-Form Creative Content)",
     company: "Influx Health",
     location: "Hyderabad, Telangana",
-    duration: "Jul 2026",
+    duration: "Jul 2026 – Present",
     icon: Video,
     bullets: [
       "Produced 60+ short-form AI videos for healthcare and educational-support clients within one month, sustaining a 5–10 video/day production pace.",
@@ -74,7 +74,7 @@ const workExperiences: WorkExperienceItem[] = [
     role: "Founder & Content Creator",
     company: "designpreneurss — Instagram Content Brand",
     location: "Remote / Online",
-    duration: "Mar 2020 – 2024",
+    duration: "Mar 2020 – Present",
     icon: Users,
     bullets: [
       "Grew designpreneurss to 30,000+ organic followers by producing trend-led reels, carousels, and tutorials on UI/UX, Photoshop, and Canva.",
@@ -87,14 +87,14 @@ const campusExperiences: CampusExperienceItem[] = [
   {
     role: "Design Lead",
     company: "Samgatha / Vashisht Fest",
-    duration: "2023 – 2024",
+    duration: "2023 - Present",
     icon: Layers,
     description: "Led a team of designers to build brand identity and media coverage for annual fests, scaling visual design systems and managing rapid asset delivery."
   },
   {
     role: "Student Coordinator",
     company: "Placement Cell Coordinator",
-    duration: "2023 – 2024",
+    duration: "2023 - Present",
     icon: Briefcase,
     description: "Coordinated recruitment logistics, stakeholder communications, and schedules for 200+ students and top recruiters."
   },
@@ -115,14 +115,14 @@ const campusExperiences: CampusExperienceItem[] = [
   {
     role: "Publicity Lead",
     company: "SAVA Fest",
-    duration: "2024 – 2025",
+    duration: "2024 - Present",
     icon: Megaphone,
     description: "Spearheaded digital publicity campaigns, reels content optimization, and marketing outreach strategies."
   },
   {
     role: "Core Member",
     company: "Photography Club — IMAGIX",
-    duration: "2022 – 2025",
+    duration: "2022 - Present",
     icon: Camera,
     description: "Handled event photography, motion showcases, and post-production editing using Lightroom and CapCut."
   }
@@ -131,7 +131,7 @@ const campusExperiences: CampusExperienceItem[] = [
 export const Experience = () => {
   return (
     <section id="experience" className="py-28 px-4 sm:px-6 md:px-12 max-w-6xl mx-auto relative z-10">
-      
+
       {/* Section Title */}
       <div className="text-center mb-20">
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#FFFCF2] tracking-tight mb-4">
@@ -144,9 +144,9 @@ export const Experience = () => {
 
       {/* Vertical Alternating Timeline Container */}
       <div className="relative mb-28">
-        
+
         {/* Central Vertical Timeline Line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-[var(--color-accent)] via-white/20 to-[var(--color-accent)] shadow-[0_0_15px_rgba(235,94,40,0.5)]" />
+        <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-1 -translate-x-1/2 bg-gradient-to-b from-[var(--color-accent)] via-[#F2A65A] to-[var(--color-accent)] shadow-[0_0_25px_rgba(235,94,40,0.9)] rounded-full z-10" />
 
         <div className="space-y-16 md:space-y-20">
           {workExperiences.map((exp, idx) => {
@@ -171,11 +171,10 @@ export const Experience = () => {
 
                 {/* Date Label on opposite side of card */}
                 <div
-                  className={`hidden md:block absolute top-3 text-xs sm:text-sm font-semibold tracking-wider text-[var(--color-accent)] uppercase ${
-                    isEven
+                  className={`hidden md:block absolute top-3 text-xs sm:text-sm font-semibold tracking-wider text-[var(--color-accent)] uppercase ${isEven
                       ? "left-[calc(50%+2.5rem)] text-left"
                       : "right-[calc(50%+2.5rem)] text-right"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center gap-1.5 inline-flex bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
                     <Calendar size={13} /> {exp.duration}
@@ -184,12 +183,11 @@ export const Experience = () => {
 
                 {/* Content Card (Alternates left/right on desktop) */}
                 <div
-                  className={`pl-12 md:pl-0 w-full md:w-[calc(50%-2.5rem)] ${
-                    isEven ? "md:mr-auto" : "md:ml-auto"
-                  }`}
+                  className={`pl-12 md:pl-0 w-full md:w-[calc(50%-2.5rem)] ${isEven ? "md:mr-auto" : "md:ml-auto"
+                    }`}
                 >
                   <div className="group relative bg-[#141419]/95 border border-white/10 hover:border-[var(--color-accent)]/50 backdrop-blur-xl p-6 sm:p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(235,94,40,0.15)]">
-                    
+
                     {/* Date badge inside card for mobile */}
                     <div className="md:hidden inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] bg-white/5 px-3 py-1 rounded-full border border-white/10 mb-3">
                       <Calendar size={12} /> {exp.duration}
