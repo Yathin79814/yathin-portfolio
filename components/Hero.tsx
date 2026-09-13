@@ -57,11 +57,11 @@ export const Hero = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-wide text-[var(--color-secondary)] mb-6 flex flex-wrap items-center justify-center gap-2"
         >
-          <span className="text-white font-bold">Creative Developer</span>
+          <span className="text-white font-bold">AI Content Creator</span>
           <span className="text-[var(--color-accent)]">•</span>
-          <span className="text-white font-bold">UI/UX Designer</span>
+          <span className="text-white font-bold">Viral Content Specialist</span>
           <span className="text-[var(--color-accent)]">•</span>
-          <span className="text-white font-bold">AI Producer</span>
+          <span className="text-white font-bold">Short-Form Creative Lead</span>
         </motion.h2>
 
         {/* Short Mission Statement */}
@@ -71,7 +71,7 @@ export const Hero = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="max-w-2xl text-base sm:text-lg text-[#CCC5B9]/80 mb-10 leading-relaxed font-normal"
         >
-          Bridging engineering precision with creative vision. Architecting scalable digital experiences, interactive web applications, and high-impact brand designs.
+          Architecting high-velocity AI video pipelines, viral short-form campaigns, and brand storytelling. Combining generative diffusion workflows with motion design to build content that converts.
         </motion.p>
 
         {/* Metric Badges Strip */}
@@ -83,17 +83,17 @@ export const Hero = () => {
         >
           <div className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-lg hover:border-[var(--color-accent)]/40 hover:bg-white/[0.05] transition-all duration-300">
             <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">30K+</span>
-            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">Design Community</span>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">Organic Audience</span>
           </div>
 
           <div className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-lg hover:border-[var(--color-accent)]/40 hover:bg-white/[0.05] transition-all duration-300">
-            <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">Full-Stack</span>
-            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">UI/UX & Code</span>
+            <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">Viral Content</span>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">Short-Form Specialist</span>
           </div>
 
           <div className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-lg hover:border-[var(--color-accent)]/40 hover:bg-white/[0.05] transition-all duration-300">
-            <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">AI & Motion</span>
-            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">Production Scale</span>
+            <span className="text-2xl md:text-3xl font-black text-[#FFFCF2] tracking-tight">60+ Videos</span>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mt-1 font-medium">Monthly AI Pipeline</span>
           </div>
         </motion.div>
 
