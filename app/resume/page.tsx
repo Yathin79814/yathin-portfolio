@@ -44,7 +44,7 @@ export default function ResumePage() {
 
       {/* Main Resume Document Wrapper */}
       <div className="max-w-4xl mx-auto bg-[#121216] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl print:shadow-none print:border-none print:bg-white print:text-black print:rounded-none print:p-0">
-        
+
         {/* Header */}
         <header className="border-b border-white/10 pb-8 mb-8 print:border-black/20">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3 text-[#FFFCF2] print:text-black">
@@ -93,7 +93,7 @@ export default function ResumePage() {
                 <h3 className="text-base font-bold text-[#FFFCF2] print:text-black">
                   Influx Health <span className="font-normal text-xs text-white/50 print:text-black/60">— Hyderabad, Telangana</span>
                 </h3>
-                <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Jul 2026</span>
+                <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Jul 2026 – Present</span>
               </div>
               <p className="text-xs font-semibold text-white/70 mb-2 italic print:text-black/80">
                 AI Content Creator (Short-Form Creative Content)
@@ -152,7 +152,7 @@ export default function ResumePage() {
               <h3 className="text-base font-bold text-[#FFFCF2] print:text-black">
                 designpreneurss <span className="font-normal text-xs text-white/50 print:text-black/60">— Instagram Content Brand</span>
               </h3>
-              <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Mar 2020 – 2024</span>
+              <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Mar 2020 – Present</span>
             </div>
             <p className="text-xs font-semibold text-white/70 mb-2 italic print:text-black/80">
               Founder & Content Creator
