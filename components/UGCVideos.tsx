@@ -12,12 +12,14 @@ import {
   Maximize2,
   Flame
 } from "lucide-react";
+import Image from "next/image";
 
 interface UGCVideoItem {
   id: string;
   title: string;
   desc: string;
   src: string;
+  poster: string;
   tag: string;
   duration?: string;
 }
@@ -28,6 +30,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "UGC Series Intro",
     desc: "High-retention series hook designed for Influx Health patient outreach.",
     src: "/videos/ugc/series-intro_sep29.mp4",
+    poster: "/videos/ugc/posters/series-intro_sep29.jpg",
     tag: "Series Hook",
     duration: "0:45"
   },
@@ -36,6 +39,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "5 Key Patient Questions",
     desc: "Interactive Q&A format addressing essential healthcare inquiries.",
     src: "/videos/ugc/five-questions_sep29.mp4",
+    poster: "/videos/ugc/posters/five-questions_sep29.jpg",
     tag: "Q&A Format",
     duration: "0:50"
   },
@@ -44,6 +48,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "Marketing Budget & ROI",
     desc: "Data-focused breakdown of clinic marketing efficiency and patient funnels.",
     src: "/videos/ugc/marketing-budget_sep29.mp4",
+    poster: "/videos/ugc/posters/marketing-budget_sep29.jpg",
     tag: "ROI Breakdown",
     duration: "1:02"
   },
@@ -52,6 +57,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "Finding the Best Doctor",
     desc: "Authentic testimonial UGC highlighting specialist discovery & booking.",
     src: "/videos/ugc/Best_Dr_Final.mp4",
+    poster: "/videos/ugc/posters/Best_Dr_Final.jpg",
     tag: "Doctor Booking",
     duration: "0:40"
   },
@@ -60,6 +66,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "5-Min Diagnostic Test",
     desc: "Fast-paced UGC feature showing home testing convenience & swift results.",
     src: "/videos/ugc/5min_Test_Final_24sep.mp4",
+    poster: "/videos/ugc/posters/5min_Test_Final_24sep.jpg",
     tag: "Diagnostics",
     duration: "0:35"
   },
@@ -68,6 +75,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "Clinic Revenue Growth",
     desc: "Impactful UGC storytelling showing clinic scale & active user engagement.",
     src: "/videos/ugc/Revenue_Final_Sep24.mp4",
+    poster: "/videos/ugc/posters/Revenue_Final_Sep24.jpg",
     tag: "Growth Story",
     duration: "0:55"
   },
@@ -76,6 +84,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "Diagnostic Video Review",
     desc: "User perspective reviewing digital lab reports and doctor consultations.",
     src: "/videos/ugc/Review_Diagnostics_Videos_Sep25.mp4",
+    poster: "/videos/ugc/posters/Review_Diagnostics_Videos_Sep25.jpg",
     tag: "User Review",
     duration: "0:48"
   },
@@ -84,6 +93,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "Metrics vs Real Retention",
     desc: "Insightful breakdown comparing vanity metrics to sustainable patient growth.",
     src: "/videos/ugc/Vanity_matrix_final_sep25.mp4",
+    poster: "/videos/ugc/posters/Vanity_matrix_final_sep25.jpg",
     tag: "Analytics",
     duration: "0:52"
   },
@@ -92,6 +102,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "Front Desk & Reception",
     desc: "Short-form showcase of automated clinic booking & reception efficiency.",
     src: "/videos/ugc/front-desk-Sep26.mp4",
+    poster: "/videos/ugc/posters/front-desk-Sep26.jpg",
     tag: "Operations",
     duration: "0:38"
   },
@@ -100,6 +111,7 @@ const ugcVideos: UGCVideoItem[] = [
     title: "10-Sec High-Convert Hook",
     desc: "Ultra short-form promotional hook video tailored for high-CTR social ads.",
     src: "/videos/ugc/website-10-sec_sep26.mp4",
+    poster: "/videos/ugc/posters/website-10-sec_sep26.jpg",
     tag: "Ad Hook",
     duration: "0:10"
   },
@@ -108,12 +120,13 @@ const ugcVideos: UGCVideoItem[] = [
     title: "App Walkthrough UGC",
     desc: "Mobile-first walkthrough demonstrating effortless specialist appointment booking.",
     src: "/videos/ugc/V1_Sep24_vid3.mp4",
+    poster: "/videos/ugc/posters/V1_Sep24_vid3.jpg",
     tag: "App Showcase",
     duration: "0:42"
   }
 ];
 
-// Individual Card Component in the Marquee Track
+// Ultra-performant Marquee Card: Uses sharp poster image during scroll & plays video preview on hover
 const UGCCard = ({
   video,
   onSelect
@@ -121,55 +134,46 @@ const UGCCard = ({
   video: UGCVideoItem;
   onSelect: (video: UGCVideoItem) => void;
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.defaultMuted = true;
-    el.muted = true;
-
-    // Pause off-screen video cards to keep GPU rendering 100% smooth (60fps)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (el.paused) {
-              el.play().catch(() => {});
-            }
-          } else {
-            if (!el.paused) {
-              el.pause();
-            }
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(el);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [video.src]);
+    if (isHovered && videoRef.current) {
+      const el = videoRef.current;
+      el.muted = true;
+      el.play().catch(() => {});
+    }
+  }, [isHovered]);
 
   return (
     <div
       onClick={() => onSelect(video)}
-      className="group relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-3xl overflow-hidden bg-[#16161a] border border-white/10 hover:border-[var(--color-accent)] hover:shadow-[0_0_35px_rgba(235,94,40,0.4)] transition-all duration-300 cursor-pointer select-none transform hover:-translate-y-1.5 will-change-transform translate-z-0"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[9/16] rounded-3xl overflow-hidden bg-[#16161a] border border-white/10 hover:border-[var(--color-accent)] hover:shadow-[0_0_35px_rgba(235,94,40,0.4)] transition-all duration-300 cursor-pointer select-none transform hover:-translate-y-1.5 will-change-transform"
     >
-      {/* Background Video Preview */}
-      <video
-        ref={videoRef}
-        src={video.src}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+      {/* Background Poster Image (Loaded instantly for 100% butter-smooth 60fps marquee scrolling) */}
+      <img
+        src={video.poster}
+        alt={video.title}
+        loading="lazy"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+          isHovered ? "opacity-0" : "opacity-100"
+        }`}
       />
+
+      {/* Live Video Preview (Plays seamlessly on Hover when scrolling is paused) */}
+      {isHovered && (
+        <video
+          ref={videoRef}
+          src={video.src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
 
       {/* Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/20 pointer-events-none transition-opacity duration-300 group-hover:opacity-90" />
@@ -234,7 +238,6 @@ export const UGCVideos = () => {
       if (promise !== undefined) {
         promise.catch((err) => {
           console.warn("Audio autoplay blocked by browser policy:", err);
-          // If browser blocks unmuted audio autoplay, fall back to muted autoplay
           el.muted = true;
           setIsMuted(true);
           el.play().catch(() => {});
@@ -301,7 +304,7 @@ export const UGCVideos = () => {
       {/* Helper text prompt */}
       <div className="text-center mt-6 text-xs text-white/40 font-mono tracking-wider flex items-center justify-center gap-2">
         <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-        Hover any video to pause scroll • Click to play from beginning unmuted
+        Hover any video to pause & preview • Click to play from beginning unmuted
       </div>
 
       {/* Spotlight Video Modal Player */}
