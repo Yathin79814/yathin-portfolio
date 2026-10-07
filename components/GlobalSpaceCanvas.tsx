@@ -14,15 +14,13 @@ export const GlobalSpaceCanvas = () => {
 
     // Scene & Camera
     const scene = new THREE.Scene();
-    
-    // Pure black cosmic fog background
-    scene.background = new THREE.Color("#000000");
+    scene.background = new THREE.Color("#121212");
 
     const camera = new THREE.PerspectiveCamera(
       60,
       window.innerWidth / window.innerHeight,
       0.1,
-      1200
+      1000
     );
     camera.position.z = 80;
 
@@ -31,7 +29,7 @@ export const GlobalSpaceCanvas = () => {
       renderer = new THREE.WebGLRenderer({
         canvas,
         alpha: false,
-        antialias: true,
+        antialias: false, // Performance optimization: turn off expensive WebGL antialiasing for points
         powerPreference: "high-performance",
       });
     } catch (e) {
@@ -39,37 +37,34 @@ export const GlobalSpaceCanvas = () => {
       return;
     }
 
+    // Caps pixel ratio to max 1.5 to guarantee 60fps on Retina displays
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     // Master Space Group
     const spaceGroup = new THREE.Group();
     scene.add(spaceGroup);
 
-    // 3D STARFIELD SYSTEM (8,000 Stars across deep space coordinates)
-    const starCount = 8000;
+    // Optimized Starfield: 3,500 Stars for ultra-smooth scrolling
+    const starCount = 3500;
     const starGeometry = new THREE.BufferGeometry();
     const starPositions = new Float32Array(starCount * 3);
     const starColors = new Float32Array(starCount * 3);
-    const starSizes = new Float32Array(starCount);
 
     const palette = [
       new THREE.Color("#FFFFFF"),
       new THREE.Color("#FFFCF2"),
-      new THREE.Color("#F2A65A"),
+      new THREE.Color("#EB5E28"),
       new THREE.Color("#E0E0E0"),
-      new THREE.Color("#8A2BE2"),
-      new THREE.Color("#00F0FF"),
+      new THREE.Color("#9d4edd"),
     ];
 
     for (let i = 0; i < starCount; i++) {
-      // Wide distribution in 3D space (-500 to +500 along X/Y, -800 to +300 along Z)
       starPositions[i * 3] = (Math.random() - 0.5) * 800;
       starPositions[i * 3 + 1] = (Math.random() - 0.5) * 800;
       starPositions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
 
-      // Color variation: 80% white/warm white, 20% accent tint
-      const isAccent = Math.random() > 0.8;
+      const isAccent = Math.random() > 0.85;
       const color = isAccent
         ? palette[Math.floor(Math.random() * palette.length)]
         : palette[Math.floor(Math.random() * 2)];
@@ -77,9 +72,6 @@ export const GlobalSpaceCanvas = () => {
       starColors[i * 3] = color.r;
       starColors[i * 3 + 1] = color.g;
       starColors[i * 3 + 2] = color.b;
-
-      // Varied star sizes for depth effect
-      starSizes[i] = Math.random() * 2.8 + 0.6;
     }
 
     starGeometry.setAttribute(
@@ -91,30 +83,29 @@ export const GlobalSpaceCanvas = () => {
       new THREE.BufferAttribute(starColors, 3)
     );
 
-    // Custom Canvas Texture for smooth circular stars
+    // Particle Texture
     const createParticleTexture = () => {
       const pCanvas = document.createElement("canvas");
-      pCanvas.width = 64;
-      pCanvas.height = 64;
+      pCanvas.width = 32;
+      pCanvas.height = 32;
       const ctx = pCanvas.getContext("2d");
       if (ctx) {
-        const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+        const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
         gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-        gradient.addColorStop(0.2, "rgba(255, 255, 255, 0.9)");
-        gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.3)");
+        gradient.addColorStop(0.3, "rgba(255, 255, 255, 0.8)");
         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
         ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 64, 64);
+        ctx.fillRect(0, 0, 32, 32);
       }
       return new THREE.CanvasTexture(pCanvas);
     };
 
     const starMaterial = new THREE.PointsMaterial({
-      size: 2.2,
+      size: 2.0,
       vertexColors: true,
       map: createParticleTexture(),
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -122,19 +113,20 @@ export const GlobalSpaceCanvas = () => {
     const starPoints = new THREE.Points(starGeometry, starMaterial);
     spaceGroup.add(starPoints);
 
-    // Interaction state variables
-    let mouseX = 0;
-    let mouseY = 0;
+    // Light-weight interaction state
     let targetX = 0;
     let targetY = 0;
-    let currentScroll = 0;
     let targetScroll = 0;
+    let currentScroll = 0;
 
+    let tick = 0;
     const handleMouseMove = (e: MouseEvent) => {
+      tick++;
+      if (tick % 2 !== 0) return; // Throttle mouse calculations by 50%
       const halfX = window.innerWidth / 2;
       const halfY = window.innerHeight / 2;
-      mouseX = (e.clientX - halfX) / halfX;
-      mouseY = (e.clientY - halfY) / halfY;
+      targetX = (e.clientX - halfX) / halfX;
+      targetY = (e.clientY - halfY) / halfY;
     };
 
     const handleScroll = () => {
@@ -145,10 +137,9 @@ export const GlobalSpaceCanvas = () => {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Resize Handler
     const handleResize = () => {
       if (!canvasRef.current) return;
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -166,19 +157,15 @@ export const GlobalSpaceCanvas = () => {
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Damping mouse & scroll
-      targetX += (mouseX - targetX) * 0.05;
-      targetY += (mouseY - targetY) * 0.05;
-      currentScroll += (targetScroll - currentScroll) * 0.06;
+      // Ultra-smooth lerping
+      currentScroll += (targetScroll - currentScroll) * 0.08;
 
-      // Gentle cosmic starfield rotation & scroll flight depth
-      spaceGroup.rotation.y = elapsedTime * 0.015 + currentScroll * Math.PI * 0.4;
-      spaceGroup.rotation.x = elapsedTime * 0.008 + targetY * 0.1;
+      spaceGroup.rotation.y = elapsedTime * 0.012 + currentScroll * Math.PI * 0.3;
+      spaceGroup.rotation.x = elapsedTime * 0.006 + targetY * 0.05;
 
-      // Camera depth movement along z axis as user scrolls
-      camera.position.z = 80 - currentScroll * 200;
-      camera.position.x = targetX * 8;
-      camera.position.y = -currentScroll * 180 - targetY * 8;
+      camera.position.z = 80 - currentScroll * 150;
+      camera.position.x = targetX * 5;
+      camera.position.y = -currentScroll * 140 - targetY * 5;
 
       renderer.render(scene, camera);
     };
@@ -199,7 +186,7 @@ export const GlobalSpaceCanvas = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-black"
+      className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-[#121212]"
     >
       <canvas ref={canvasRef} className="w-full h-full block" />
     </div>

@@ -220,26 +220,27 @@ const ReelCard = ({
     const el = videoRef.current;
     if (!el) return;
 
-    el.muted = true;
-    let isMounted = true;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (el.paused) {
+              el.play().catch(() => {});
+            }
+          } else {
+            if (!el.paused) {
+              el.pause();
+            }
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
-    const startPlayback = async () => {
-      try {
-        if (el.paused && isMounted) {
-          await el.play();
-        }
-      } catch (err: any) {
-        // Silently catch AbortError & NotAllowedError from browser media throttling
-      }
-    };
-
-    startPlayback();
+    observer.observe(el);
 
     return () => {
-      isMounted = false;
-      if (el) {
-        el.pause();
-      }
+      observer.disconnect();
     };
   }, [video.src]);
 
@@ -257,10 +258,11 @@ const ReelCard = ({
       <video
         ref={videoRef}
         src={video.src}
+        autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
@@ -333,14 +335,19 @@ export const WorkVideos = () => {
   };
 
   return (
-    <section id="videos" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative z-10">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#FFFCF2] tracking-tight mb-4 flex items-center justify-center gap-3">
-          Featured Motion & AI Work <Sparkles className="text-[var(--color-accent)] w-8 h-8 sm:w-10 sm:h-10" />
-        </h2>
-        <p className="text-base sm:text-lg text-[var(--color-secondary)] leading-relaxed">
-          From smooth transitions to precise audio syncing and dynamic animations — I focus on making your content not just polished, but powerful.
+    <section id="work" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+      {/* Header matching video section 03 */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-white/10 pb-8">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)] mb-2">
+            03 — FEATURED WORK
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#FFFCF2] tracking-tight flex items-center gap-3">
+            Real projects. Real impact.
+          </h2>
+        </div>
+        <p className="text-sm sm:text-base text-white/60 max-w-lg leading-relaxed font-normal">
+          A selection of featured work spanning healthcare AI videos, high-converting commercial reels, Hinglish/Telugu campaigns, and motion editing.
         </p>
       </div>
 

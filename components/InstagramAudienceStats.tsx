@@ -136,7 +136,7 @@ export default function InstagramAudienceStats() {
               <span className="font-bold text-base text-[#FFFCF2]">@designpreneurss</span>
               <CheckCircle2 size={15} className="text-[#38bdf8] fill-[#38bdf8]/10" />
             </div>
-            <span className="text-xs text-white/60 font-medium">UI/UX & Creative Tech</span>
+            <span className="text-xs text-white/60 font-medium">AI Content & Short-Form Video</span>
           </div>
         </a>
       </div>

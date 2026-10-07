@@ -16,11 +16,11 @@ export const About = () => {
         </h2>
         
         <p className="text-xl text-[var(--color-secondary)] leading-relaxed mb-6">
-          I engineer digital experiences at the intersection of UI/UX design, AI-driven content creation, and creative technology. Currently pursuing my B.Tech in CSE (AI) at IIITDM Kancheepuram, I combine analytical systems thinking with high-end visual execution.
+          I produce high-volume AI video pipelines and viral short-form content at the intersection of Artificial Intelligence, video production, and brand storytelling. Currently pursuing my B.Tech in Computer Science & Engineering (AI) at IIITDM Kancheepuram, I combine AI systems thinking with rapid creative execution.
         </p>
         
         <p className="text-lg text-white/60 leading-relaxed mb-12">
-          Beyond pixel-pushing, I've founded and grown a community of 30,000+ designers. My focus is on designing for clarity, engagement, and measurable value—whether architecting scalable design systems or directing large-scale university initiatives.
+          I've founded and grown designpreneurss to an organic community of 30,000+ followers. Having delivered 60+ AI videos for healthcare and education clients at Influx Health (sustaining a 5–10 video/day pace), my focus is on driving measurable engagement and scaling high-converting video pipelines.
         </p>
       </motion.div>
     </section>

@@ -132,14 +132,24 @@ export const Experience = () => {
   return (
     <section id="experience" className="py-28 px-4 sm:px-6 md:px-12 max-w-6xl mx-auto relative z-10">
 
-      {/* Section Title */}
-      <div className="text-center mb-20">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#FFFCF2] tracking-tight mb-4">
-          Work Experience<span className="text-[var(--color-accent)]">.</span>
+      {/* Section 04 Process Header matching video */}
+      <div className="mb-20">
+        <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)] mb-2">
+          04 — HOW WE'LL WORK TOGETHER
+        </div>
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#FFFCF2] tracking-tight mb-4">
+          From messy idea → viral content.
         </h2>
-        <p className="text-base sm:text-lg text-[var(--color-secondary)] max-w-xl mx-auto">
-          High-volume AI content production, brand design, and digital marketing milestones.
+        <p className="text-sm sm:text-base text-white/60 max-w-xl font-normal">
+          A structured, high-pace production workflow from initial discovery and AI scripting to final motion polish and multi-channel publishing.
         </p>
+      </div>
+
+      {/* Section Title */}
+      <div className="text-left mb-16 border-b border-white/10 pb-6">
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#FFFCF2] tracking-tight">
+          Work Experience & Leadership Milestones
+        </h3>
       </div>
 
       {/* Vertical Alternating Timeline Container */}

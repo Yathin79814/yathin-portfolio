@@ -52,3 +52,30 @@ body:has(.gallery-page) .noise-bg {
   display: none !important;
 }
 
+/* Continuous Marquee Scrolling Right-To-Left (GPU Hardware Accelerated) */
+@keyframes marquee-right-to-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation: marquee-right-to-left 50s linear infinite;
+}
+
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}
+
+
+
+

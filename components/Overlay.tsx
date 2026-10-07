@@ -26,16 +26,16 @@ export const Overlay = ({ scrollYProgress }: OverlayProps) => {
     <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-center px-4">
       <motion.div style={{ opacity: op1, y: y1 }} className="absolute">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[#FFFCF2]">Damalla Yathin</h1>
-        <p className="text-xl md:text-2xl text-[var(--color-secondary)]">Creative Developer · UI/UX Designer · AI Content</p>
+        <p className="text-xl md:text-2xl text-[var(--color-secondary)]">AI Content Creator · Short-Form Specialist · AI Video Lead</p>
       </motion.div>
 
       <motion.div style={{ opacity: op2, y: y2 }} className="absolute">
-        <h2 className="text-4xl md:text-6xl font-bold leading-tight text-[#FFFCF2]">Bridging engineering precision<br />with creative vision.</h2>
+        <h2 className="text-4xl md:text-6xl font-bold leading-tight text-[#FFFCF2]">Bridging AI video production<br />with creative storytelling.</h2>
       </motion.div>
 
       <motion.div style={{ opacity: op3, y: y3 }} className="absolute">
-        <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-4 text-[#FFFCF2]">UI/UX · Brand Strategy · AI Production</h2>
-        <p className="text-xl md:text-2xl text-[var(--color-secondary)]">Architected for scale.</p>
+        <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-4 text-[#FFFCF2]">Higgsfield · HeyGen · Claude · CapCut</h2>
+        <p className="text-xl md:text-2xl text-[var(--color-secondary)]">60+ AI Videos Produced at Scale.</p>
       </motion.div>
 
       <motion.div style={{ opacity: op4, y: y4 }} className="absolute">
