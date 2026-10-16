@@ -133,16 +133,62 @@ export const Experience = () => {
     <section id="experience" className="py-28 px-4 sm:px-6 md:px-12 max-w-6xl mx-auto relative z-10">
 
       {/* Section Header */}
-      <div className="mb-16 border-b border-white/10 pb-6">
-        <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)] mb-2">
-          EXPERIENCE
+      <div className="relative mb-20 text-center">
+        {/* Outlined watermark word behind the headline */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 -top-10 sm:-top-14 select-none pointer-events-none whitespace-nowrap overflow-hidden text-[clamp(3.5rem,13vw,10rem)] font-black uppercase leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(255,252,242,0.07)]"
+        >
+          Experience
         </div>
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#FFFCF2] tracking-tight mb-4">
-          Work Experience & Leadership Milestones
-        </h2>
-        <p className="text-sm sm:text-base text-white/60 max-w-xl font-normal">
-          From healthcare AI video pipelines to a 30K+ creator brand — the roles where I shipped content at pace.
-        </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md text-xs font-semibold tracking-wide text-white/80 mb-6">
+            <Briefcase size={14} className="text-[var(--color-accent)]" />
+            <span>Career Journey</span>
+          </div>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#FFFCF2] tracking-tight leading-[1.05]">
+            Where I&apos;ve shipped,{" "}
+            <span className="italic bg-gradient-to-r from-[var(--color-accent)] via-[#f28e5a] to-[#FFFCF2] bg-clip-text text-transparent">
+              at scale.
+            </span>
+          </h2>
+          <p className="mt-5 text-sm sm:text-base text-white/60 max-w-xl mx-auto font-normal">
+            Healthcare AI pipelines, startup marketing and a creator brand I built from zero.
+          </p>
+        </motion.div>
+
+        {/* Impact stat strip */}
+        <div className="relative mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
+          {[
+            { value: "60+", label: "AI videos in one month" },
+            { value: "5–10", label: "videos shipped per day" },
+            { value: "30K+", label: "organic followers built" },
+            { value: "3", label: "companies, 6 campus roles" },
+          ].map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 + idx * 0.08 }}
+              className="group rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl px-4 py-5 hover:border-[var(--color-accent)]/50 transition-colors"
+            >
+              <div className="text-3xl sm:text-4xl font-black tracking-tight text-[#FFFCF2] group-hover:text-[var(--color-accent)] transition-colors">
+                {stat.value}
+              </div>
+              <div className="mt-1 text-[11px] sm:text-xs font-medium uppercase tracking-wider text-white/50">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* Vertical Alternating Timeline Container */}
