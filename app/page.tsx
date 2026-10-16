@@ -11,7 +11,6 @@ import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Achievements } from "@/components/Achievements";
 import { Experience } from "@/components/Experience";
-import { PinterestAds } from "@/components/PinterestAds";
 import { CombinedGallery } from "@/components/CombinedGallery";
 import { CTA } from "@/components/CTA";
 
@@ -51,7 +50,6 @@ export default async function Home() {
         <UGCVideos />
         <About />
         <Experience />
-        <PinterestAds />
         <Achievements />
         <Skills />
         <CombinedGallery files={galleryFiles} />
