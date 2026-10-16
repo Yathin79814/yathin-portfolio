@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GalleryClient } from "@/components/GalleryClient";
 
@@ -39,6 +40,17 @@ export function generateStaticParams() {
     { category: "imagix" },
     { category: "cvip" }
   ];
+}
+
+export async function generateMetadata({ params }: GalleryPageProps): Promise<Metadata> {
+  const { category } = await params;
+  const meta = categoryMeta[category.toLowerCase()];
+  if (!meta) return {};
+  return {
+    title: `${meta.title} Gallery`,
+    description: meta.description.split(". ")[0] + ".",
+    alternates: { canonical: `/gallery/${category.toLowerCase()}` },
+  };
 }
 
 export default async function GalleryPage({ params }: GalleryPageProps) {

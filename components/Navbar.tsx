@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Sparkles, FileText, ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, FileText, ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
   { id: "work", label: "Work" },
@@ -15,6 +15,7 @@ const navLinks = [
 export const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +46,13 @@ export const Navbar = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setMenuOpen(false);
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Navbar also renders on /resume and /gallery, where these sections don't exist
+      window.location.href = `/#${id}`;
     }
   };
 
@@ -117,8 +122,53 @@ export const Navbar = () => {
             <span>Resume</span>
             <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            className="md:hidden w-9 h-9 rounded-full bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/90 hover:bg-white/10 transition-colors cursor-pointer"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Dropdown Nav */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            id="mobile-nav"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute top-full mt-3 left-4 right-4 pointer-events-auto bg-[#121216]/95 backdrop-blur-xl border border-white/15 rounded-3xl p-3 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] flex flex-col"
+          >
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className={`text-left px-4 py-3 rounded-2xl text-sm font-semibold transition-colors cursor-pointer ${
+                  activeSection === link.id
+                    ? "bg-white/10 text-[#FFFCF2]"
+                    : "text-white/70 hover:bg-white/[0.05] hover:text-white"
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="mt-1 text-left px-4 py-3 rounded-2xl text-sm font-bold text-[var(--color-accent)] hover:bg-white/[0.05] transition-colors cursor-pointer"
+            >
+              Contact
+            </button>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

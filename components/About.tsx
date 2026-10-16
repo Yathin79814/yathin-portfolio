@@ -16,7 +16,7 @@ export const About = () => {
         </h2>
         
         <p className="text-xl text-[var(--color-secondary)] leading-relaxed mb-6">
-          I produce high-volume AI video pipelines and viral short-form content at the intersection of Artificial Intelligence, video production, and brand storytelling. Currently pursuing my B.Tech in Computer Science & Engineering (AI) at IIITDM Kancheepuram, I combine AI systems thinking with rapid creative execution.
+          I produce high-volume AI video pipelines and viral short-form content at the intersection of Artificial Intelligence, video production, and brand storytelling. A B.Tech graduate in Computer Science & Engineering (AI) from IIITDM Kancheepuram (2026), I combine AI systems thinking with rapid creative execution.
         </p>
         
         <p className="text-lg text-white/60 leading-relaxed mb-12">

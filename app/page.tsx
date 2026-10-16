@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import { GlobalSpaceCanvas } from "@/components/GlobalSpaceCanvas";
 import { Preloader } from "@/components/Preloader";
-import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ToolMarquee } from "@/components/ToolMarquee";
 import { Services } from "@/components/Services";
@@ -38,9 +37,6 @@ export default async function Home() {
     <main className="relative bg-[#121212] min-h-screen selection:bg-[var(--color-accent)] selection:text-white">
       {/* Futuristic Preloader Curtain */}
       <Preloader />
-
-      {/* Top Floating Glass Navbar */}
-      <Navbar />
 
       {/* Global 3D Space Canvas spanning across all sections */}
       <GlobalSpaceCanvas />

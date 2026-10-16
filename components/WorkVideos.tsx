@@ -198,6 +198,10 @@ const videoData: VideoItem[] = [
   }
 ];
 
+// Lightweight first frame shown until the reel scrolls into view (generated into public/videos/posters)
+const posterFor = (src: string) =>
+  `/videos/posters/${src.split("/").pop()!.replace(/\.mp4$/, ".jpg")}`;
+
 const categories = [
   "All",
   "Hinglish",
@@ -258,11 +262,11 @@ const ReelCard = ({
       <video
         ref={videoRef}
         src={video.src}
-        autoPlay
+        poster={posterFor(video.src)}
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
