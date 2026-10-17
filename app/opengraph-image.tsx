@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Damalla Yathin — AI Content Creator & Short-Form Video Producer";
+export const alt = "Damalla Yathin — AI Content Engineer & Short-Form Video Producer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -20,7 +20,7 @@ export default function Image() {
         }}
       >
         <div style={{ fontSize: 28, color: "#EB5E28", fontWeight: 700, letterSpacing: 4 }}>
-          AI CONTENT CREATOR · SHORT-FORM VIDEO
+          AI CONTENT ENGINEER · SHORT-FORM VIDEO
         </div>
         <div style={{ fontSize: 96, fontWeight: 800, marginTop: 24 }}>Damalla Yathin</div>
         <div style={{ fontSize: 36, color: "rgba(255,252,242,0.7)", marginTop: 24, maxWidth: 900 }}>

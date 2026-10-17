@@ -87,7 +87,7 @@ export const Preloader = () => {
                 YATHIN
               </span>
               <span className="text-xs uppercase font-bold tracking-widest text-[var(--color-accent)] mt-1 block">
-                AI Content Creator & Video Specialist
+                AI Content Engineer & Video Specialist
               </span>
             </div>
 

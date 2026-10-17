@@ -26,7 +26,7 @@ export const Overlay = ({ scrollYProgress }: OverlayProps) => {
     <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-center px-4">
       <motion.div style={{ opacity: op1, y: y1 }} className="absolute">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[#FFFCF2]">Damalla Yathin</h1>
-        <p className="text-xl md:text-2xl text-[var(--color-secondary)]">AI Content Creator · Short-Form Specialist · AI Video Lead</p>
+        <p className="text-xl md:text-2xl text-[var(--color-secondary)]">AI Content Engineer · Short-Form Specialist · AI Video Lead</p>
       </motion.div>
 
       <motion.div style={{ opacity: op2, y: y2 }} className="absolute">

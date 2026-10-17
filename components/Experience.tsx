@@ -35,7 +35,7 @@ interface CampusExperienceItem {
 
 const workExperiences: WorkExperienceItem[] = [
   {
-    role: "AI Content Creator (Short-Form Creative Content)",
+    role: "AI Content Engineer (Short-Form Creative Content)",
     company: "Influx Health",
     location: "Hyderabad, Telangana",
     duration: "Jul 2026 – Present",
@@ -71,7 +71,7 @@ const workExperiences: WorkExperienceItem[] = [
     ]
   },
   {
-    role: "Founder & Content Creator",
+    role: "Founder & AI Content Engineer",
     company: "designpreneurss — Instagram Content Brand",
     location: "Remote / Online",
     duration: "Mar 2020 – Present",

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   authors: [{ name: SITE_NAME }],
   keywords: [
-    "AI content creator",
+    "AI content engineer",
     "short-form video",
     "AI video production",
     "Higgsfield",

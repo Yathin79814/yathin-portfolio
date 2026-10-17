@@ -36,7 +36,7 @@ export const Hero = () => {
           >
             <Sparkles size={14} className="text-[var(--color-accent)]" />
             <span className="text-xs sm:text-sm font-semibold tracking-wide text-white/90">
-              AI Content Creator & Short-Form Specialist
+              AI Content Engineer & Short-Form Specialist
             </span>
           </motion.div>
 
@@ -124,7 +124,7 @@ export const Hero = () => {
           <div className="relative w-full max-w-lg sm:max-w-xl h-[500px] sm:h-[620px] lg:h-[700px] flex items-end justify-center pointer-events-none overflow-hidden">
             <Image
               src="/yathin-hero.png"
-              alt="Yathin - AI Content Creator"
+              alt="Yathin - AI Content Engineer"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -51,7 +51,7 @@ export default function ResumePage() {
             DAMALLA YATHIN
           </h1>
           <p className="text-base sm:text-lg text-[var(--color-accent)] font-semibold mb-6 print:text-black">
-            AI Content Creator · Short-Form Creative Video Producer · UI/UX Designer
+            AI Content Engineer · Short-Form Creative Video Producer · UI/UX Designer
           </p>
 
           <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm text-white/70 print:text-black/80">
@@ -76,7 +76,7 @@ export default function ResumePage() {
             Professional Summary
           </h2>
           <p className="text-sm sm:text-base text-white/80 leading-relaxed print:text-black">
-            AI Content Creator with a track record of producing high-volume, on-brand short-form video at scale. Delivered 60+ AI-generated videos for healthcare and education clients in under one month, sustaining a 5–10 video/day production pace using Higgsfield, HeyGen, CapCut, and Claude. Grew <span className="text-white font-semibold print:text-black">designpreneurss</span> to 30,000+ organic followers through trend-driven reels and consistent brand storytelling.
+            AI Content Engineer with a track record of producing high-volume, on-brand short-form video at scale. Delivered 60+ AI-generated videos for healthcare and education clients in under one month, sustaining a 5–10 video/day production pace using Higgsfield, HeyGen, CapCut, and Claude. Grew <span className="text-white font-semibold print:text-black">designpreneurss</span> to 30,000+ organic followers through trend-driven reels and consistent brand storytelling.
           </p>
         </section>
 
@@ -96,7 +96,7 @@ export default function ResumePage() {
                 <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Jul 2026 – Present</span>
               </div>
               <p className="text-xs font-semibold text-white/70 mb-2 italic print:text-black/80">
-                AI Content Creator (Short-Form Creative Content)
+                AI Content Engineer (Short-Form Creative Content)
               </p>
               <ul className="list-disc list-outside ml-4 space-y-1.5 text-xs sm:text-sm text-white/75 print:text-black/90">
                 <li>Produced 60+ short-form AI videos for healthcare and educational-support clients within one month, sustaining a 5–10 video/day production pace.</li>
@@ -155,7 +155,7 @@ export default function ResumePage() {
               <span className="text-xs font-medium text-[var(--color-accent)] print:text-black">Mar 2020 – Present</span>
             </div>
             <p className="text-xs font-semibold text-white/70 mb-2 italic print:text-black/80">
-              Founder & Content Creator
+              Founder & AI Content Engineer
             </p>
             <ul className="list-disc list-outside ml-4 space-y-1.5 text-xs sm:text-sm text-white/75 print:text-black/90">
               <li>Grew designpreneurss to <span className="font-bold text-white print:text-black">30,000+ followers</span> by producing trend-led reels, carousels, and tutorials on UI/UX, Photoshop, and Canva.</li>

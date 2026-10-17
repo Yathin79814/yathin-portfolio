@@ -17,7 +17,7 @@ export const CTA = () => {
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#FFFCF2]">Let's build something exceptional.</h2>
           <p className="text-xl text-[var(--color-secondary)] mb-10 max-w-xl mx-auto">
-            Currently open for AI Content Creation & Graphic Design roles. If you're looking for someone who designs for impact, let's talk.
+            Currently open for AI Content Engineering & Graphic Design roles. If you're looking for someone who designs for impact, let's talk.
           </p>
           
           <a
